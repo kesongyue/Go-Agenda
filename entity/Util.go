@@ -5,9 +5,9 @@ import (
 	"os"
 )
 
-var UFilepath = "F:/GOProject/src/Go-Agenda/entity/Data/UJson"
-var ULoginFilepath = "F:/GOProject/src/Go-Agenda/entity/Data/ULoginJson"
-var MFilepath = "F:/GOProject/src/Go-Agenda/entity/Data/MJson"
+var UFilepath = "./entity/Data/UJson"
+var ULoginFilepath = "./entity/Data/ULoginJson"
+var MFilepath = "./entity/Data/MJson"
 var Users []User
 var Meetings []Meeting
 var Loginuser User
