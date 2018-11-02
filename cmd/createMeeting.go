@@ -11,9 +11,10 @@ import (
 
 var createMeetingCmd = &cobra.Command{
 	Use:   "createMeeting",
-	Short: "A brief description of your command",
-	Long:  `create a Meeting`,
+	Short: "create a Meeting",
+	Long:  `create a Meeting:createMeeting -t xxx -p xxx,xxx -s xx-xx-xx/xx:xx -e xx-xx-xx/xx:xx`,
 	Run: func(cmd *cobra.Command, args []string) {
+		//判断是否已登录
 		if entity.IsLogin() {
 			sponsor := entity.Loginuser.Name
 			title, _ := cmd.Flags().GetString("title")
@@ -40,6 +41,7 @@ var createMeetingCmd = &cobra.Command{
 					return
 				}
 			}
+			//判断日期是否合理
 			st := entity.StringToDate(startTime)
 			et := entity.StringToDate(endTime)
 			if !entity.IsDateValid(st) || !entity.IsDateValid(et) {
@@ -66,7 +68,7 @@ var createMeetingCmd = &cobra.Command{
 					}
 				}
 			}
-
+			//加入新的会议
 			newMeeting := entity.Meeting{
 				Sponsor:      sponsor,
 				Participator: participators,

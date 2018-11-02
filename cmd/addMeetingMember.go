@@ -14,10 +14,11 @@ var addMeetingMemberCmd = &cobra.Command{
 	Short: "add MeetingMember by title",
 	Long:  "add MeetingMember by title,usage:addMeetingMember -t xxx -p xxx,xxx,...",
 	Run: func(cmd *cobra.Command, args []string) {
+		//首先判断是否已经登录
 		if entity.IsLogin() {
 			title, _ := cmd.Flags().GetString("title")
 			participator, _ := cmd.Flags().GetString("participator")
-			// 检查改会议的发起者是不是已登录的用户
+			// 检查该会议的发起者是不是已登录的用户
 			meeting := entity.GetMeetingByTitle(title)
 			if meeting.Sponsor != entity.Loginuser.Name {
 				fmt.Println("Sorry! The Meeting " + title + " is not sponsored by you, you have no access to add a participator")
@@ -57,7 +58,7 @@ var addMeetingMemberCmd = &cobra.Command{
 					entity.GetMeetings()[i] = meeting
 				}
 			}
-
+			//写入文件
 			entity.WriteJson()
 			fmt.Println("Add Meeting Participator  successfully!")
 

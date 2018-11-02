@@ -14,6 +14,7 @@ var quitMeetingCmd = &cobra.Command{
 	Long: `quit a meeting by title,only as a participator! 
 			If you are the sponsor of this meeting, you shoule use the command "cancelMeeting" `,
 	Run: func(cmd *cobra.Command, args []string) {
+		// 检测是否已经登录
 		if entity.IsLogin() {
 			title, _ := cmd.Flags().GetString("title")
 
@@ -40,6 +41,7 @@ var quitMeetingCmd = &cobra.Command{
 				return
 			}
 
+			//如果退出后使得会议人数为0则删除该会议
 			var remainMeeting []entity.Meeting
 			for _, meet := range entity.GetMeetings() {
 				if meet.Title != title || (meet.Title == title && len(meet.Participator) != 0) {

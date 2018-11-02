@@ -14,6 +14,7 @@ var deleteMeetingMemberCmd = &cobra.Command{
 	Short: "delete a or a list of MeetingMember in a specifed meeting",
 	Long:  "delete a or a list of MeetingMember in a specifed meeting",
 	Run: func(cmd *cobra.Command, args []string) {
+		//检查是否已经登录
 		if entity.IsLogin() {
 			title, _ := cmd.Flags().GetString("title")
 			participator, _ := cmd.Flags().GetString("participator")
@@ -42,6 +43,7 @@ var deleteMeetingMemberCmd = &cobra.Command{
 				}
 			}
 
+			//抽出剩下的参与者
 			var remainPartic []string
 			isRemain := true
 			for _, member := range meeting.Participator {

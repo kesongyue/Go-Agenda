@@ -10,9 +10,10 @@ import (
 // cancelMeetingCmd represents the cancelMeeting command
 var cancelMeetingCmd = &cobra.Command{
 	Use:   "cancelMeeting",
-	Short: "delete a meeting by title",
-	Long:  "delete a meeting by title, only you can delete the meeting sponsored by you",
+	Short: "delete a meeting by a given title",
+	Long:  "delete a meeting by title, only you can delete the meeting sponsored by you!!!",
 	Run: func(cmd *cobra.Command, args []string) {
+		//判断是否登录
 		if entity.IsLogin() {
 			title, _ := cmd.Flags().GetString("title")
 
@@ -33,6 +34,7 @@ var cancelMeetingCmd = &cobra.Command{
 				fmt.Println("There is no this meeting named " + title)
 				return
 			}
+			//写入文件
 
 			entity.Meetings = remainMeeting
 			entity.WriteJson()
