@@ -35,7 +35,7 @@ go run main.go queryUser
 ```
 go run main.go delete
 ```
-+ 对于会议的操作(关于命令的详情要求请看设计文档)：
++ 对于会议的操作(关于命令的详情要求请看[设计文档](https://github.com/kesongyue/Go-Agenda/blob/master/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.md))：
   + 先用`go build main.go`就会生成main.exe 可执行文件
   + 创建会议（日期要符合格式要求，多个参与者用英文`,`连接）：
   
