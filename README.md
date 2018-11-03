@@ -112,5 +112,3 @@ F:\Users\HP\GOPATH\src\Go-Agenda>cobra add login
 获取用户的数组：entity.Users
 
 获取会议的数组：entity.Meetings
-
-1
